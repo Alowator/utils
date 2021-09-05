@@ -1,11 +1,13 @@
 Команды для deploy django
+
 Создание пользователя
 ---------------------
 adduser username
 usermod -aG sudo username
 group username
 su username
----------------------------------------
+
+
 Компиляции python 3.6
 ----------------------
 sudo apt-get install -y make build-essential libssl-dev zlib1g-dev
@@ -23,10 +25,10 @@ python3.6
 
 -------------------------------------
 python3 -m venv venv
+pip freeze >req.txt
 pip install -r req.txt
--------------------------------------
 
------------------------------------------
+
 Создание базы данных
 --------------------
 sudo -u postgres psql
