@@ -1,5 +1,23 @@
 Команды для deploy django
 
+config
+---------------------
+touch config/gunicorn.conf.py:
+bind = '127.0.0.1:8000'
+workers = 1
+user = "{username}"
+timeout = 120
+
+touch config/{project_name}.conf:
+[program:{project_name}]
+command={project_loaction}/venv/bin/gunicorn {project_name}.wsgi:application -c {project_loaction}/config/gunicorn.conf.py
+directory={project_loaction}
+user={username}
+autorestart=true
+redirect_stderr=true
+stdout_logfile={project_loaction}/logs/debug.log
+
+
 Создание пользователя
 ---------------------
 adduser username
