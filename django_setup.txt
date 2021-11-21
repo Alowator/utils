@@ -61,7 +61,7 @@ GRANT ALL PRIVILEGES ON DATABASE movie TO userdb;
 ----------------------------------------
 Установка Gunicorn
 ------------------
-gunicorn project.wsgi:application --bind 111.222.333.44:8000
+gunicorn {project_name}.wsgi:application --bind {server_ip}:8000
 ----------------------------------------
 Настрока nginx
 --------------
@@ -132,12 +132,14 @@ server{
 
 ---------------------------------------
 Настройка supervisor
+sudo apt-get install supervisor
 cd /etc/supervisor/conf.d/
+sudo ln {project_location}/config/{project_name}.conf
 sudo update-rc.d supervisor enable
 sudo service supervisor start
 sudo supervisorctl reread
 sudo supervisorctl update
-sudo supervisorctl status project
-sudo supervisorctl restart project
+sudo supervisorctl status {project_name}
+sudo supervisorctl restart {project_name}
 --------------------
 
